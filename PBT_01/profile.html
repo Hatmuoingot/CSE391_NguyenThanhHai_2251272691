@@ -1,12 +1,78 @@
-
-<html lang="en">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang web đầu tiên của tôi</title>
+    <title>Nguyễn Thanh Hải</title>
 </head>
 <body>
-    <h1>Chào mừng bạn đến với trang của tôi!</h1>
-    <p>Đây là trang đầu tiên của tôi. Tôi đang học cách tạo trang web bằng HTML.</p>
+    <header>
+        <nav aria-label="Menu">
+            <a href="#about">Về tôi</a>
+            <a href="#skills">Kỹ năng</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            <article>
+                <figure>
+                    <img src="/PBT_01/screenshots/AnhThe.jpg" alt="Ảnh đại diện của Nguyễn Thanh Hải" width="150" height="200" loading="lazy">
+                    <figcaption>Nguyễn Thanh Hải - Sinh viên năm 4</figcaption>
+                </figure>
+                <p>Xin chào! Tôi là Nguyễn Thanh Hải, sinh viên năm 4 chuyên ngành An Ninh Mạng tại Đại học Thủy Lợi. Mình có niềm đam mê lớn với Ethical Hacking, bảo mật mạng và phát triển phần mềm an toàn.</p>
+            </article>
+        </section>
+        <section id="skills">
+            <h2>Bảng Kỹ Năng</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Kỹ năng</th>
+                        <th scope="col">Mức độ</th>
+                        <th scope="col">Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kali Linux & Penetration Testing</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>Sử dụng được Metasploit, Burp Suite</td>
+                    </tr>
+                    <tr>
+                        <td>C++</td>
+                        <td>⭐⭐⭐</td>
+                        <td>Nắm vững cơ bản</td>
+                    </tr>
+                    <tr>
+                        <td>Solidity / Blockchain</td>
+                        <td>⭐⭐⭐</td>
+                        <td>Thực hành tốt trên Remix IDE</td>
+                    </tr>
+                    <tr>
+                        <td>HTML5 / CSS3</td>
+                        <td>⭐⭐</td>
+                        <td>Đang học CSE391</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Cập nhật lần cuối: Tháng 4/2026</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+    <aside id="contact">
+        <h2>Thông tin liên hệ</h2>
+        <address>
+            Email: <a href="mailto:2251272691@e.tlu.edu.vn">2251272691@e.tlu.edu.vn</a><br>
+            Github: <a href="https://github.com/Hatmuoingot" target="_blank" rel="noopener noreferrer">github.com/Hatmuoingot</a>
+        </address>
+    </aside>
+    <footer>
+        <p>&copy; 2026 Nguyễn Thanh Hải. All rights reserved.</p>
+    </footer>
 </body>
 </html>
