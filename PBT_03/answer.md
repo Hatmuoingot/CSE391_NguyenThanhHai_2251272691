@@ -128,3 +128,41 @@ p#demo { color: red; }                          /* 8. Spec: 1,0,1 */
 Element cuối cùng sẽ hiển thị màu Dark Magenta. Lý do: Rule #demo.text.highlight sở hữu độ ưu tiên cao nhất với điểm số Specificity là 1-2-0 (1 ID, 2 Classes, 0 Tags).
 
 Nếu thay đổi thứ tự các rules trong CSS file, kết quả không thay đổi (trừ rule 3 và 4 vì cùng điểm). Quy tắc Cascade xử lý Specificity độc lập với thứ tự đọc tệp; thứ tự từ trên xuống dưới chỉ đóng vai trò phân định khi hai rules có điểm Specificity bằng nhau.
+Câu C1:
+1. Tính chiều rộng thực tế (content-box):
+
+Sidebar: width (300px) + padding trái/phải (20px * 2) + border trái/phải (1px * 2) = 342px.
+
+Content: width (660px) + padding trái/phải (30px * 2) + border trái/phải (1px * 2) = 722px.
+
+2. Tổng chiều rộng thực tế của hai cột là 342px + 722px = 1064px. Con số này vượt quá kích thước của .container cha (chỉ có 960px). Do không đủ chỗ chứa trên cùng một dòng, cột thứ hai (.content) bị đẩy (wrap) xuống dòng bên dưới.
+
+3. 2 cách sửa:
+
+Cách 1 (Khuyên dùng - Dùng border-box): Thêm thuộc tính box-sizing: border-box; cho cả .sidebar và .content. Khi đó, padding và border sẽ bị co vào bên trong, ép tổng chiều rộng hai cột trở về đúng thông số khai báo ban đầu là 300px + 660px = 960px, vừa khít container.
+
+Cách 2 (Không dùng border-box - Trừ hao thủ công): Ta phải tự tính toán trừ đi phần đệm và viền vào thuộc tính width. Ta sửa width của .sidebar thành 258px (300 - 40 - 2) và width của .content thành 598px (660 - 60 - 2).
+Câu C2:
+1. "Sản phẩm A" (h2) có font-size = ? và color = ?
+
+font-size = 20px (Nhờ rule .card .title nhắm mục tiêu trực tiếp vào nó, ghi đè font-size kế thừa từ .container).
+
+color = green (Mặc dù ID selector #featured .title { color: red } có điểm specificity rất cao (100), nhưng thẻ này lại mang class .highlight chứa cờ !important. Cờ này có quyền ưu tiên tuyệt đối, vô hiệu hóa mọi luật khác).
+
+2. "Mô tả sản phẩm" (p trong card featured) có color = ?
+
+color = blue.
+
+Giải thích: Phần tử này được nhắm mục tiêu bởi rule .card p { color: inherit; }, yêu cầu nó kế thừa trực tiếp màu từ thẻ cha gần nhất (<div class="card" id="featured">). Phần tử cha này không bị tác động bởi luật #featured .title, mà nhận màu từ rule .card { color: blue; }. Do đó, <p> thừa hưởng màu xanh lam (blue).
+
+3. "Sản phẩm B" (h2) có font-size = ? và color = ?
+
+font-size = 20px (Áp dụng từ rule .card .title).
+
+color = blue (Các thuộc tính liên quan đến văn bản (text properties) mặc định sẽ được truyền xuống phần tử con. Thẻ h2 nằm trong .card nên nó kế thừa color: blue từ cha).
+
+4. "Mô tả sản phẩm B" (p.highlight) có color = ?
+
+color = green.
+
+Giải thích: Thẻ <p> này có class .highlight. Quy tắc .highlight { color: green !important; } với cờ !important sẽ chiến thắng quy tắc .card p { color: inherit; } (mặc dù .card p có điểm specificity là 11, cao hơn 10 của .highlight, nhưng !important phá vỡ luật điểm số).
