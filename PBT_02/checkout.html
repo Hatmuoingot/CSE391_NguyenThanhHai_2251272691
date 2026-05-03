@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán Đơn hàng</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .section-box { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        .bonus-box { background: #f9f9f9; padding: 15px; border-left: 4px solid #4CAF50; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Thanh toán Đơn hàng</h1>
+
+    <div class="bonus-box">
+        <label for="member-points">Hạng thẻ thành viên (Điểm tích lũy):</label>
+        <meter id="member-points" value="87" min="0" max="100" low="30" high="80" optimum="90" title="87/100 điểm"></meter> 
+        <span>Khách hàng Vàng</span>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label for="search-add">Mua thêm sản phẩm:</label>
+        <input type="search" id="search-add" list="suggestions" placeholder="Tìm kiếm phụ kiện...">
+        <datalist id="suggestions">
+            <option value="Đèn Bi-LED mini trợ sáng"></option>
+            <option value="Dây mạng LAN bấm sẵn 5m"></option>
+            <option value="Pate tươi cho mèo"></option>
+        </datalist>
+    </div>
+
+    <form action="/checkout" method="POST">
+        <div class="section-box">
+            <h2>1. Chi tiết Giỏ hàng</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Đèn Bi-LED mini Honda Vision</td>
+                        <td>450.000đ</td>
+                        <td>1</td>
+                        <td>450.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mesh Node iGate EW12ST</td>
+                        <td>750.000đ</td>
+                        <td>1</td>
+                        <td>750.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Dây dắt an toàn cho mèo</td>
+                        <td>150.000đ</td>
+                        <td>2</td>
+                        <td>300.000đ</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" scope="row" style="text-align: right;">Tổng cộng:</th>
+                        <td><strong><output name="totalAmount" id="totalAmount">1.500.000đ</output></strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="section-box">
+            <h2>2. Thông tin Thanh toán</h2>
+            <p>Chọn phương thức thanh toán:</p>
+            <div>
+                <label><input type="radio" name="payment" value="cod" required> Thanh toán khi nhận hàng (COD)</label><br>
+                <label><input type="radio" name="payment" value="bank"> Chuyển khoản ngân hàng</label><br>
+                <label><input type="radio" name="payment" value="ewallet"> Ví điện tử (Momo/ZaloPay)</label>
+            </div>
+
+            <br>
+            <label for="coupon">Mã giảm giá:</label>
+            <input type="text" id="coupon" name="coupon" pattern="^SALE\d{4}$" placeholder="VD: SALE2026" title="Bắt buộc bắt đầu bằng chữ SALE và kèm theo đúng 4 chữ số">
+
+            <br><br>
+            <label for="notes">Ghi chú đơn hàng:</label><br>
+            <textarea id="notes" name="notes" rows="4" style="width: 100%;" placeholder="Nhập ghi chú cho người giao hàng..."></textarea>
+        </div>
+
+        <div class="section-box">
+            <h2>3. Lịch hẹn Giao hàng</h2>
+            
+            <label for="delivery-date">Ngày giao hàng mong muốn:</label>
+            <input type="date" id="delivery-date" name="delivery-date" min="2026-04-27" required>
+            
+            <br><br>
+            <label for="delivery-time">Khung giờ nhận hàng:</label>
+            <select id="delivery-time" name="delivery-time" required>
+                <option value="">-- Chọn khung giờ --</option>
+                <option value="morning">Sáng (8:00 - 12:00)</option>
+                <option value="afternoon">Chiều (14:00 - 18:00)</option>
+                <option value="evening">Tối (18:00 - 21:00)</option>
+            </select>
+
+            <br><br>
+            <label for="delivery-speed">Thời gian chờ tối đa (1 - 7 ngày):</label><br>
+            <span>1 ngày </span>
+            <input type="range" id="delivery-speed" name="delivery-speed" min="1" max="7" step="1" value="3">
+            <span> 7 ngày</span>
+        </div>
+
+        <button type="submit" aria-label="Xác nhận đặt hàng" style="padding: 15px 30px; font-size: 16px; background-color: #d32f2f; color: white; border: none; border-radius: 5px; cursor: pointer;">XÁC NHẬN ĐẶT HÀNG MUA</button>
+    </form>
+</body>
+</html>

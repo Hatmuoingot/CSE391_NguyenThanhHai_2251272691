@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký tài khoản</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+        fieldset { margin-bottom: 20px; border-radius: 5px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        input[type="radio"], input[type="checkbox"] { width: auto; margin-right: 5px; }
+        .radio-group { display: flex; gap: 15px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Đăng ký thành viên</h1>
+    <form action="#" method="POST">
+        
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            
+            <label for="fullname">Họ và tên <span aria-hidden="true">*</span>:</label>
+            <input type="text" id="fullname" name="fullname" required minlength="2" maxlength="50" placeholder="VD: Nguyễn Thanh Hải">
+            
+            <label for="email">Email <span aria-hidden="true">*</span>:</label>
+            <input type="email" id="email" name="email" required placeholder="hai@example.com">
+            
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="VD: 0912345678" title="Vui lòng nhập đúng 10 chữ số">
+            
+            <label for="dob">Ngày sinh (Không chọn tương lai):</label>
+            <input type="date" id="dob" name="dob" max="2026-04-26" value="2004-08-19">
+        </fieldset>
+
+        <fieldset>
+            <legend>Thông tin Tài khoản</legend>
+            
+            <label for="username">Tên đăng nhập <span aria-hidden="true">*</span>:</label>
+            <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9_]{3,20}" placeholder="VD: thanhhai_sec" title="Chỉ gồm chữ cái, số, dấu gạch dưới (3-20 ký tự)">
+            
+            <label for="password">Mật khẩu <span aria-hidden="true">*</span>:</label>
+            <input type="password" id="password" name="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Nhập mật khẩu..." title="Tối thiểu 8 ký tự, gồm chữ hoa, chữ thường và số">
+            
+            <label for="confirm_password">Xác nhận mật khẩu <span aria-hidden="true">*</span>:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required placeholder="Nhập lại mật khẩu...">
+        </fieldset>
+
+        <fieldset>
+            <legend>Thông tin Giao hàng</legend>
+            
+            <label for="city">Thành phố <span aria-hidden="true">*</span>:</label>
+            <select id="city" name="city" required>
+                <option value="">-- Chọn Tỉnh/Thành phố --</option>
+                <option value="HN" selected>Hà Nội</option>
+                <option value="TH">Thanh Hóa</option>
+                <option value="HCM">TP. Hồ Chí Minh</option>
+                <option value="DN">Đà Nẵng</option>
+                <option value="HP">Hải Phòng</option>
+            </select>
+            
+            <label for="district">Quận/Huyện:</label>
+            <select id="district" name="district">
+                <option value="">-- Chọn Quận/Huyện --</option>
+                <option value="caugiay">Cầu Giấy</option>
+                <option value="dongda">Đống Đa</option>
+                <option value="hoangmai">Hoàng Mai</option>
+            </select>
+            
+            <label for="address">Địa chỉ chi tiết:</label>
+            <textarea id="address" name="address" rows="3" placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+            
+            <label>Giới tính:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="nam" checked> Nam</label>
+                <label><input type="radio" name="gender" value="nu"> Nữ</label>
+                <label><input type="radio" name="gender" value="khac"> Khác</label>
+            </div>
+        </fieldset>
+
+        <label style="font-weight: normal; margin-bottom: 20px;">
+            <input type="checkbox" name="terms" required> Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật.
+        </label>
+
+        <div style="display: flex; gap: 10px;">
+            <button type="submit" style="padding: 10px 20px; cursor: pointer;">Đăng ký ngay</button>
+            <button type="reset" style="padding: 10px 20px; cursor: pointer;">Nhập lại toàn bộ</button>
+        </div>
+    </form>
+</body>
+</html>
