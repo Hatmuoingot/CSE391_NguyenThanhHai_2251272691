@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model Lab</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+    <h2>Phần 1: Chứng minh content-box vs border-box</h2>
+    <div class="box content-box">Box 1 (content-box)</div>
+    <div class="box border-box">Box 2 (border-box)</div>
+
+    <h2>Phần 2: Layout 3 cột (Sẽ bị vỡ nếu không dùng border-box)</h2>
+    <div class="container">
+        <div class="col sidebar">Sidebar (250px)</div>
+        <div class="col content">Content (500px)</div>
+        <div class="col ads">Ads (250px)</div>
+    </div>
+</body>
+</html>

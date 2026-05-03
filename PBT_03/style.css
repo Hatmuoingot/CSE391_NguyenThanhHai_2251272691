@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; 
+    color: #333333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: #c8d9eb;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+nav a.active {
+    color: #ffcc00; 
+    font-weight: bold;
+    border-bottom: 2px solid #ffcc00;
+    text-decoration: none;
+}
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+#about, #skills {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+tfoot td {
+    text-align: right;
+    font-style: italic;
+    background-color: #f8f9fa;
+}
+
+#contact {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-left: 5px solid #2a5298;
+}
+
+footer {
+    background-color: #212529;
+    color: #adb5bd;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}

@@ -1,0 +1,11 @@
+/* Từ thấp đến cao */
+* { color: black; }                             /* 1. Spec: 0,0,0 */
+p { color: gray; }                              /* 2. Spec: 0,0,1 */
+.text { color: lightblue; }                     /* 3. Spec: 0,1,0 */
+.highlight { color: blue; }                     /* 4. Spec: 0,1,0 (Thắng rule 3 do viết sau) */
+p.text { color: green; }                        /* 5. Spec: 0,1,1 */
+.text.highlight { color: orange; }              /* 6. Spec: 0,2,0 */
+#demo { color: brown; }                         /* 7. Spec: 1,0,0 */
+p#demo { color: red; }                          /* 8. Spec: 1,0,1 */
+#demo.text { color: purple; }                   /* 9. Spec: 1,1,0 */
+#demo.text.highlight { color: darkmagenta; }    /* 10. Spec: 1,2,0 */
