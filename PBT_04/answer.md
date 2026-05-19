@@ -64,3 +64,65 @@ Câu A2:
   │ │ Item 7 │ (Ô trống) (Ô trống) │
   │ └───────────┘ │
   └───────────────────────────────────────────────────────────┘
+
+Câu C1:
+
+1. Navigation bar ngang: Dùng Flexbox. Vì đây là dạng layout định hướng 1 chiều dòng dữ liệu nằm ngang, cấu trúc Flexbox hỗ trợ căn chỉnh hoàn hảo các khối con nằm giữa trục dọc bằng align-items: center và phân phối khoảng cách giãn cách hai đầu cực nhanh thông qua thuộc tính justify-content.
+
+2. Lưới ảnh Instagram: Dùng Grid. Bản chất lưới ảnh Instagram là layout phân cấp cả 2 chiều (2D - hàng và cột đều cố định). Dùng grid-template-columns: repeat(3, 1fr) sẽ đảm bảo các ô luôn có độ rộng bằng nhau tuyệt đối, và khi số ảnh tăng lên không giới hạn, các ô tự động wrap xuống dòng dưới theo cấu trúc ô lưới hoàn chỉnh.
+
+3. Layout blog (main content + sidebar): Dùng Grid. Bố cục trang web lớn dạng cột bất đối xứng như này thích hợp xử lý bằng Grid. Thiết lập tường minh grid-template-columns: 1fr 300px (hoặc tỷ lệ tương đương) giúp kiểm soát phân chia chính xác vùng không gian lớn của trang.
+
+4. Footer với 4 cột thông tin: Dùng Flexbox (với flex: 1 hoặc phần trăm rộng cố định) hoặc Grid (với repeat(4, 1fr)). Tuy nhiên, Grid tối ưu và gọn mã hơn vì chỉ cần định nghĩa duy nhất 1 dòng khai báo ở thẻ cha container là có ngay 4 cột đều nhau tăm tắp, không cần gán thủ công CSS width lên từng thẻ con.
+
+5. Card sản phẩm (ảnh trên, text giữa, nút dưới dính đáy): Dùng Flexbox hướng dọc (flex-direction: column). Việc ép khối con chuyển hướng dòng dọc biến card thành một layout 1 chiều. Lúc này thuộc tính margin-top: auto gán trên nút "Mua" sẽ kích hoạt cơ chế chiếm dụng không gian trống phía trên để đẩy chiếc nút xuống bám sát vào đáy của thẻ Card.
+
+Câu C2:
+
+- Lỗi 1: Cards không đều chiều cao — nút "Mua" bị nhảy tự do
+  Nguyên nhân: Khối bao ngoài .card chưa được kích hoạt thuộc tính hiển thị Flexbox, do đó chiều cao của các card dù bằng nhau (theo cơ chế kéo dãn mặc định của flex container cha .card-container), nhưng phần khối ruột .card-body bên trong lại co giãn tự do theo độ dài ngắn của tiêu đề chữ. Nút bấm không có cơ chế neo đáy.
+  Sửa lỗi:
+  /_ Kích hoạt hướng dòng dọc bên trong bản thân mỗi Card sản phẩm _/
+  .card {
+  width: 30%;
+  margin: 1.5%;
+  display: flex;
+  flex-direction: column; /_ Biến ruột card thành flex hướng dọc _/
+  }
+  /_ Thêm class hoặc bổ trợ bao quanh phần nội dung thông tin _/
+  .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /_ Cho phép phần thân tự co dãn chiếm không gian trống _/
+  }
+  /_ Neo chết nút bấm luôn dính sát đáy Card _/
+  .card .btn {
+  margin-top: auto; /_ CHÌA KHÓA: Đẩy nút bám sát đáy _/
+  padding: 10px;
+  }
+- Lỗi 2: Item muốn căn chính giữa tuyệt đối nhưng vẫn dính góc trái trên cùng
+  Nguyên nhân: Mới chỉ khai báo thuộc tính kích hoạt display: flex cho thẻ cha nhưng hoàn toàn thiếu đi 2 thuộc tính cấu hình điều hướng phân bổ không gian là căn giữa trục ngang (justify-content) và căn giữa trục dọc (align-items).
+  Sửa lỗi:
+  .hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center; /_ Kéo phần tử con vào chính giữa theo trục ngang _/
+  align-items: center; /_ Kéo phần tử con vào chính giữa theo trục dọc _/
+  }
+  .hero-content {
+  text-align: center;
+  }
+- Lỗi 3: Sidebar bị co móp lại khi khối Content kề bên có văn bản quá dài
+  Nguyên nhân: Theo cơ chế mặc định của Flexbox, giá trị co rút flex-shrink của các item bằng 1. Khi vùng nội dung .content kế bên chứa chuỗi ký tự quá dài hoặc dung lượng lớn tràn ra ngoài, flex container sẽ tự động ép và co bóp độ rộng của .sidebar nhỏ lại hơn mức 250px thiết lập ban đầu để nhường chỗ cho content.
+  Sửa lỗi:
+  .layout {
+  display: flex;
+  }
+  .sidebar {
+  width: 250px;
+  flex-shrink: 0; /_ CHÌA KHÓA: Cấm tuyệt đối hệ thống tự ý co móp độ rộng của Sidebar _/
+  }
+  .content {
+  flex: 1;
+  min-width: 0; /_ Đảm bảo an toàn không làm vỡ giao diện khi văn bản dài tràn dòng _/
+  }
