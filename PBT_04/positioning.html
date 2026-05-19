@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Playground</title>
+    <link rel="stylesheet" href="./css/positioning.css">
+</head>
+<body>
+
+    <header class="fixed-header">
+        <div class="logo">🛡️ CyberSec Logo</div>
+        <nav class="nav-links">
+            <a href="#">Trang chủ</a>
+            <a href="#">Dịch vụ</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        
+        <aside class="sticky-sidebar">
+            <h3>Menu Bộ Lọc</h3>
+            <ul>
+                <li><a href="#">Hạ tầng mạng</a></li>
+                <li><a href="#">Kiểm thử Labs</a></li>
+                <li><a href="#">Phân tích Log sự cố</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="product-card">
+                <span class="badge-hot">HOT</span>
+                <div class="product-img-placeholder">📸 Ảnh Router Mesh</div>
+                <div class="product-info">
+                    <h4>iGate EW12ST Mesh Router</h4>
+                    <p>Giải pháp tối ưu hóa định tuyến, triệt tiêu vùng chết IP.</p>
+                </div>
+            </div>
+
+            <div class="dummy-scroll-text">
+                <p>Scroll xuống để kiểm tra tính năng cố định của Header và tính năng dính của Sidebar...</p>
+                <div class="spacer"></div>
+                <p>Dữ liệu giả lập kéo dài trang web phục vụ việc test scroll...</p>
+                <div class="spacer"></div>
+                <p>Bạn đã cuộn xuống cuối trang</p>
+            </div>
+        </main>
+    </div>
+
+    <button class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+</body>
+</html>
