@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f9;
+}
+
+.flex-navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    padding: 15px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px; 
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: #2563eb;
+    border-bottom: 2px solid #2563eb;
+}
+
+.nav-auth {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-login, .btn-register {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-login {
+    border: 1px solid #cbd5e1;
+    background-color: transparent;
+}
+
+.btn-register {
+    border: none;
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    color: #0f172a;
+}
+
+.flex-grid-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.flex-card {
+    flex: 0 0 calc(25% - 15px); 
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flex-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 160px;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.card-title {
+    font-size: 15px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.card-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ef4444;
+    margin-bottom: 15px;
+}
+
+.btn-buy {
+    margin-top: auto; 
+    width: 100%;
+    padding: 10px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-buy:hover {
+    background-color: #1e293b;
+}
