@@ -1,0 +1,37 @@
+.product-card {
+    background-color: white;
+    border-radius: $radius-card;
+    overflow: hidden;
+    @include card-soft-shadow; 
+
+    .card-img-box {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .card-info {
+        padding: $spacing-md;
+
+        h4 {
+            font-size: 15px;
+            color: $secondary-color;
+        }
+
+        .price {
+            color: $danger-color;
+            font-weight: bold;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+    }
+}
