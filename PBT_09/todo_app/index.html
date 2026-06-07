@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài B1 - Todo App Hoàn Chỉnh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .cursor-pointer { cursor: pointer; }
+        .todo-completed {
+            text-decoration: line-through !important;
+            color: #6c757d !important;
+            background-color: #f8fafc !important;
+        }
+    </style>
+</head>
+<body class="bg-light p-4">
+
+    <div class="container" style="max-width: 500px;">
+        <h3 class="fw-bold mb-3 text-dark">📝 Todo App</h3>
+        
+        <form id="todoForm" class="input-group mb-3">
+            <input type="text" id="todoInput" class="form-control" placeholder="Nhập công việc cần làm...">
+            <button type="submit" class="btn btn-primary fw-bold">Add</button>
+        </form>
+
+        <div class="d-flex justify-content-between align-items-center small mb-3 bg-white p-2 rounded shadow-sm">
+            <span id="itemsLeft" class="text-muted fw-medium">0 items left</span>
+            
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm btn-outline-secondary active fw-bold" id="filterAll">All</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="filterActive">Active</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="filterCompleted">Completed</button>
+            </div>
+            
+            <button type="button" class="btn btn-danger btn-sm py-1" id="clearCompleted">Clear Completed</button>
+        </div>
+
+        <ul class="list-group shadow-sm" id="todoList"></ul>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
