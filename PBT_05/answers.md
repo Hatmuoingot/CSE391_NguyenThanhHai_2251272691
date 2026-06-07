@@ -37,3 +37,20 @@ Câu A4:
 4 tính năng: 1. Biến ($color: #fff), 2. Nesting (lồng), 3. Mixins (@mixin tái sử dụng block code), 4. @extend (kế thừa).
 
 Tại sao browser không đọc được: Trình duyệt chỉ hiểu CSS chuẩn. SCSS là ngôn ngữ mở rộng cần được Compile (biên dịch) thành file .css trước khi đưa lên trình duyệt.
+
+Câu C1:
+Mobile: Thanh menu chuyển thành Hamburger icon (dấu 3 gạch).
+
+Desktop: Menu trải dài ngang.
+
+Responsive: Grid chuyển từ 1 cột (Mobile) sang nhiều cột (Desktop). Các banner phụ thường bị ẩn đi trên mobile để tiết kiệm diện tích.
+
+Câu C2:
+Mobile: Logo trên, form đặt bàn dạng cột đơn, ảnh món ăn xếp dọc.
+
+Desktop: Logo bên trái, menu ngang. Grid 3 cột cho món ăn. Bản đồ và Form đặt bàn chia đôi màn hình.
+
+CSS Skeleton:
+
+.container { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .container { grid-template-columns: 1fr 1fr; } }
