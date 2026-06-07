@@ -26,3 +26,38 @@ Dự đoán luồng chạy điều kiện:
 if ([]) -> Chạy vào nhánh TRUE (Mọi mảng và object dù rỗng vẫn là Truthy).
 if ("") -> Chạy vào nhánh FALSE (Nằm trong danh sách Falsy mặc định).
 if ("0") -> Chạy vào nhánh TRUE (Chuỗi có ký tự bên trong luôn là Truthy).
+
+Câu C1:
+Lỗi 1: Sai toán tử gán trong mệnh đề if
+
+Vị trí: if (giaSauGiam = 0) { ... }
+
+Bản chất: Dấu = là toán tử gán chứ không phải so sánh. Câu lệnh này vô tình ép biến giaSauGiam về bằng 0, và vì số 0 là một giá trị Falsy nên khối mã bên trong if sẽ không bao giờ được thực thi.
+
+Cách sửa: Đổi thành toán tử so sánh nghiêm ngặt ===: if (giaSauGiam === 0) { ... }
+
+Lỗi 2: Tính toán sai kiểu dữ liệu (Type Coercion)
+
+Vị trí: tinhGiaGiamGia("100000", 20)
+
+Bản chất: Giá trị truyền vào đang là một Chuỗi ("100000") chứ không phải số. Mặc dù toán tử nhân \* và chia / ở dòng dưới tự động ép kiểu về dạng số để tính ra kết quả đúng, nhưng đây là một thói quen nguy hiểm dễ sinh bug trong các phép tính cộng.
+
+Cách sửa: Chuyển đổi tường minh bằng hàm Number() ngay khi nhận tham số: giaBan = Number(giaBan);
+
+Lỗi 3: Lỗi logic in thông báo kết quả sai mốc
+
+Vị trí: Khối test gán const gia2 = tinhGiaGiamGia(50000, 110) vẫn cố tình in ra log.
+
+Bản chất: Khi truyền vào số phần trăm giảm là 110, hàm sẽ lọt vào nhánh if chặn trên và trả về chuỗi thông báo "Phần trăm giảm không hợp lệ". Do đó câu lệnh log bên ngoài sẽ in ra kết quả kỳ dị là: Giá: Phần trăm giảm không hợp lệ.
+
+Cách sửa: Cần kiểm tra kiểu dữ liệu của kết quả trả về trước khi in ra màn hình.
+
+Lỗi 4: Lỗi "ẩn" kinh điển liên quan đến Scope của var trong vòng lặp
+
+Vị trí: for (var i = 0; i < 5; i++) { setTimeout(...) }
+
+Bản chất: Biến var không có Block Scope mà hoạt động theo cơ chế Function/Global Scope. Hàm setTimeout là xử lý bất đồng bộ, nó sẽ đợi sau 1 giây (1000ms) mới kích hoạt chạy log. Tại thời điểm 1 giây sau đó, vòng lặp for đã chạy xong từ lâu và biến i toàn cục đã tăng chạm mốc số 5. Kết quả là màn hình sẽ in ra 5 dòng chữ Item 5 lặp lại giống hệt nhau thay vì chạy từ 0 đến 4.
+
+Cách sửa: Thay thế từ khóa khai báo var thành let. Mỗi lượt lặp của let sẽ tạo ra một block scope riêng biệt gắn chặt với giá trị của i tại vòng lặp đó.
+
+Câu C2:
