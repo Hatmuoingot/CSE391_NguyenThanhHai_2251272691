@@ -82,3 +82,53 @@ console.log(product.price); -> 25990000 (Mã gốc không hề bị thay đổi 
 console.log(product.specs.ram); -> 16
 Giải thích bẫy Spread Operator:
 Cú pháp rải chân phương { ...product } chỉ thực hiện sao chép nông (Shallow Copy). Nó chỉ nhân bản các trường dữ liệu nguyên bản ở tầng bề mặt. Đối với các Object lồng sâu bên trong như trường specs, lệnh spread chỉ sao chép lại cái địa chỉ ô nhớ (Reference pointer) chứ không sao chép dữ liệu ruột. Do đó, khi ta can thiệp sửa thuộc tính copy.specs.ram = 16, nó sẽ tác động trực tiếp lên ô nhớ chung và làm biến đổi luôn cả mảng dữ liệu gốc ban đầu.
+
+Câu C1:
+Đoạn mã lặp vòng lặp for lồng cồng kềnh và sắp xếp thủ công (Ugly code) được làm sạch tinh gọn trong vòng 5 dòng code ngắn áp dụng pipeline array methods và cú pháp destructuring:
+
+JavaScript
+const processOrders = (orders) =>
+orders
+.filter({ status, total }) => status === "completed" && total > 100000) // Lọc điều kiện
+.map({ id, customer, total }) => ({ id, customer, total, discount: total _ 0.1, finalTotal: total _ 0.9 })) // Tái cấu trúc mảng
+.sort((a, b) => b.finalTotal - a.finalTotal); // Sắp xếp giảm dần theo tổng tiền cuối
+
+Câu C2:
+const miniArray = {
+// Tự viết hàm Map: Duyệt mảng, đẩy giá trị sau khi qua hàm biến đổi vào mảng mới
+map(arr, fn) {
+const newArr = [];
+for (let i = 0; i < arr.length; i++) {
+newArr.push(fn(arr[i], i, arr));
+}
+return newArr;
+},
+
+    // Tự viết hàm Filter: Duyệt mảng, nếu hàm điều kiện trả về true thì mới giữ lại phần tử
+    filter(arr, fn) {
+        const newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (fn(arr[i], i, arr)) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    },
+
+    // Tự viết hàm Reduce: Tích lũy giá trị liên tiếp qua từng lượt lặp
+    reduce(arr, fn, initialValue) {
+        let accumulator = initialValue !== undefined ? initialValue : arr[0];
+        let startIndex = initialValue !== undefined ? 0 : 1;
+
+        for (let i = startIndex; i < arr.length; i++) {
+            accumulator = fn(accumulator, arr[i], i, arr);
+        }
+        return accumulator;
+    }
+
+};
+
+// --- KIỂM TRA ĐẦU RA (ĐẢM BẢO TOÀN BỘ CÁC PHÉP TEST ĐỀ BÀI ĐỀU ĐẠT) ---
+console.log(miniArray.map([1, 2, 3], x => x \* 2)); // Đầu ra: [2, 4, 6]
+console.log(miniArray.filter([1, 2, 3, 4], x => x > 2)); // Đầu ra: [3, 4]
+console.log(miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0)); // Đầu ra: 10
