@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>B3 - Infinite Scroll Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        /* Khung lưới Responsive: 4 cột desktop, 2 cột tablet, 1 cột mobile */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+        .photo-card img:hover { transform: scale(1.03); }
+    </style>
+</head>
+<body class="bg-light p-4">
+    <div class="container">
+        <h4 class="fw-bold mb-4 text-center">📸 Bộ Sưu Tập Ảnh Vô Hạn (Lazy Load)</h4>
+
+        <div id="galleryGrid" class="gallery-grid"></div>
+
+        <div id="load-trigger" class="text-center py-4 text-muted fw-bold small">
+            ⏳ Đang tải thêm ảnh mới...
+        </div>
+    </div>
+    <script src="./app_g.js"></script>
+</body>
+</html>
