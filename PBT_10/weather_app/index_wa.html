@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>B1 - Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-light p-4">
+    <div class="container" style="max-width: 500px;">
+        <h4 class="fw-bold mb-3">🌤️ Ứng Dụng Thời Tiết</h4>
+        
+        <div class="input-group mb-3">
+            <input type="text" id="cityInput" class="form-control" placeholder="Gõ 'Hanoi' để thử nghiệm...">
+            <button id="searchBtn" class="btn btn-dark fw-bold">Tìm</button>
+        </div>
+
+        <div class="mb-3">
+            <span class="small text-muted me-2">Lịch sử:</span>
+            <div id="historyContainer" class="d-inline-flex gap-1"></div>
+        </div>
+
+        <div id="statusBox" class="card card-body shadow-sm border-0 text-center py-4">
+            <p class="m-0 text-muted">Vui lòng nhập tên thành phố để xem thời tiết.</p>
+        </div>
+    </div>
+    <script src="./app_wa.js"></script>
+</body>
+</html>
